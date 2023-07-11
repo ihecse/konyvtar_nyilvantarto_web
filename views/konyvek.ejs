@@ -1,0 +1,37 @@
+<%- include('header') %>
+    <section id="main" class="container">
+        <h1 class="text-center m-5">Összes könyv</h1>
+        <a class="btn btn-outline-primary float-end" href="/konyvek/new">Új könyv felvétele</a>
+        
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th class="col-1"></th>
+                    <th class="col-3">Szerző</th>
+                    <th class="col-4">Cím</th>
+                    <th class="col-2">Kiadás éve</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% konyvek.forEach(function(egykonyv){ %>
+                    <tr>
+                        <td class="col-1">
+                            <a class="btn btn-secondary" href="/kolcsonzes/<%= egykonyv._id %>">előzmények</a>
+                        </td>
+                        <td class="col-3"><%= egykonyv.szerzo %></td>
+                        <td class="col-4"><%= egykonyv.cim %></td>
+                        <td class="col-2"><%= egykonyv.ev %></td>
+                        <td class="col-1">
+                            <a class="btn btn-primary " href="/konyvek/edit/<%= egykonyv._id %>">módosítás</a>
+                        </td>
+                        <td class="col-1">
+                            <a class="btn btn-danger" href="/konyvek/del/<%= egykonyv._id %>"> törlés </a>
+                        </td>
+                    </tr>
+               <% }); %>
+                        
+            </tbody>
+        </table>
+
+    </section>
+<%- include('footer') %>

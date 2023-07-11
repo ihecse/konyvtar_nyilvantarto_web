@@ -1,0 +1,36 @@
+<%- include('header') %>
+    <section class="container">
+        <h1 class="text-center m-5">Új kölcsönzés, módosítás </h1>
+        <h2 class="text-center m-5"> <%= konyv.szerzo %>: <%= konyv.cim%></h2>
+
+        <form method="POST" class="row g-3">
+            <div class="mb-3">
+                <div class="col-1"></div>
+                <label class="col-2" for="inputNev" form-label> Kölcsönző neve</label>
+                <input class="col-8" type="text" class="form-control" id="inputNev" name="nev"
+                value="<%= (typeof kolcsonzes === 'undefined') ? '' : kolcsonzes.nev %>" required/>
+            </div>
+            <div class="mb-3">
+                <div class="col-1"></div>
+                <label class="col-2" for="inputKezdete" form-label>Kezdete</label>
+                <input class="col-2" type="Date" class="form-control" id="inputkezdete" name="kolcsonzes_kezdete"
+                value="<%= (typeof kolcsonzes === 'undefined') ? '' : kolcsonzes.kolcsonzes_kezdete %>" required/>
+               
+            </div>
+            <div class="mb-3">
+                <div class="col-1"></div>
+                <label class="col-2" for="inputVege" form-label>Vége</label>
+                <input class="col-2" type="Date" class="form-control" id="inputVege" name="kolcsonzes_vege"
+                value="<%= (typeof kolcsonzes === 'undefined') ? '' : kolcsonzes.kolcsonzes_vege %>" required/>
+            </div>            
+            <div class="form-group row">
+                <label class="col-md-12 col-form-label form-control-label"></label>
+                <div class="col-md-12">
+                    <input type="submit" class="mx-2 btn btn-primary float-end" value="Mentés"/>
+                    <a class="btn btn-outline-dark text-black float-end" href="/kolcsonzes/<%= konyv._id %>">Mégse</a>
+                </div>
+            </div>
+            
+        </form>
+    </section>
+<%- include('footer') %>

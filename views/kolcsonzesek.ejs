@@ -1,0 +1,44 @@
+<%- include('header') %>
+    <section class="container">
+        <h1 class="text-center m-5">Előzmények</h1>
+        <h2 class="text-center m-5"> <%= konyv.szerzo %>: <%= konyv.cim %> előzményei</h2>
+        <a class="mx-4 btn btn-light float-end" href="/konyvek">Vissza a könyvekhez</a>
+        <a  href="/kolcsonzes/<%= konyv._id %>/new" class="btn bg-info float-end">Új kölcsönzés felvétele</a>
+
+        <table class="table table-striped">
+           <thead>
+                <tr>
+                    <th class="col-1">#</th>
+                    <th class="col-4">Név</th>
+                    <th class="col-2">Kölcsönzés kezdete</th>
+                    <th class="col-2">Kölcsönzés vége</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% kolcsonzesek.forEach(function(egykolcsonzes){ %>
+                    <%  if((egykolcsonzes._kolcsonzott).toString() == (konyv._id).toString()){%>
+                            <tr>
+                                <td class="col-1"></td>
+                             
+                                <td class="col-4"><%= egykolcsonzes.nev %></td>
+
+                                <td class="col-2"><%= egykolcsonzes.kolcsonzes_kezdete.toISOString().slice(0,10) %></td>
+        
+                                <td class="col-2"><%= egykolcsonzes.kolcsonzes_vege.toISOString().slice(0,10) %></td>
+        
+                                <td class="col-1">
+                                   <a class="btn btn-primary " href="/kolcsonzes/<%= konyv._id %>/<%= egykolcsonzes._id %>/edit">módosítás</a>
+                                </td>
+                                <td class="col-1">
+                                    <a class="btn btn-danger" href="/kolcsonzes/<%= konyv._id %>/<%= egykolcsonzes._id %>/del">törlés</a>
+                                </td>
+        
+                            </tr>
+                            <% }; %>
+               <% }); %>
+             
+            </tbody>
+
+        </table>
+    </section>
+<%- include('footer') %>

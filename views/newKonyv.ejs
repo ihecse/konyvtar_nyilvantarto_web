@@ -1,0 +1,43 @@
+<%- include('header') %>
+
+    <section id="main" class="container">
+        <h1 class="text-center m-5">Könyv hozzáadása, módosítása</h1>
+
+        <form class="row g-3" method="POST" action="#">
+            <!----<div id="konyvid" class="form-control"> </div>--->
+                
+           
+            <div class="mb-3">
+                <div class="col-1"></div>
+                <label class="col-2" for="inputSzerzo"  form-label> Szerző</label>
+                <input class="col-8" type="text" class="form-control" id="inputSzerzo" name="szerzo"
+                value="<%= (typeof konyv === 'undefined') ? '' : konyv.szerzo %>" required/>
+            </div>
+            <div class="mb-3">
+                <div class="col-1"></div>
+                <label class="col-2" for="inputCim" form-label> Cím</label>
+                <input class="col-8" type="text" class="form-control" id="inputCim" name="cim"
+                value="<%= (typeof konyv === 'undefined') ? '' : konyv.cim %>" required/>
+            </div>
+            <div class="mb-3">
+                <div class="col-1"></div>
+                <label class="col-2" for="inputKiadas" form-label> Kiadás éve</label>
+                <input class="col-1" type="number" class="form-control" id="inputKiadas" name="ev"
+                value="<%= (typeof konyv === 'undefined') ? '' : konyv.ev %>"/>
+            </div>  
+
+
+            <div class="form-group row">
+                <label class="col-md-12 col-form-label form-control-label"></label>
+                <div class="col-md-12">
+                    <input type="submit" class="mx-2 btn btn-primary float-end" value="Mentés"/>
+                    <a class="btn btn-link btn-outline-dark float-end" href="/konyvek">Vissza</a>
+                </div>
+            </div>
+                    
+        </form>
+
+
+   </section>
+
+<%- include('footer') %>
